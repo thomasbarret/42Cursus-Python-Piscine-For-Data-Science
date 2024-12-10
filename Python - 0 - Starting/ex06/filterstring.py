@@ -3,6 +3,10 @@ import sys
 
 
 def main():
+    """
+    The function filters the words that have a length greater
+    than the provided number.
+    """
     try:
         if len(sys.argv) != 3:
             raise AssertionError("the arguments are bad")

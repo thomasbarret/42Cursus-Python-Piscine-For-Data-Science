@@ -3,7 +3,29 @@ import sys
 
 def main():
     """
-    A faire
+    Analyze a given string and summarize its content.
+
+    This function counts the number of uppercase letters, lowercase letters,
+    punctuation marks, spaces, and digits in a string. The string is either
+    provided as a command-line argument or entered via stdin if no arguments
+    are passed.
+
+    Behavior:
+    - If no arguments: prompts the user for input.
+    - If one argument: analyzes the provided string.
+    - If more than one argument: raises an AssertionError.
+
+    Output:
+    Prints the total number of characters and their breakdown by type.
+
+    Example:
+    $ python script.py "Hello, World! 123"
+    The text contains 17 characters:
+    2 upper letters
+    8 lower letters
+    2 punctuation marks
+    2 spaces
+    3 digits
     """
     try:
         if len(sys.argv) == 1:

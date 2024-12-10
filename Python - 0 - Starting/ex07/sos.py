@@ -2,6 +2,9 @@ import sys
 
 
 def main():
+    """
+    The function converts the provided string into Morse code.
+    """
     try:
         if len(sys.argv) != 2:
             raise AssertionError("the arguments are bad")
