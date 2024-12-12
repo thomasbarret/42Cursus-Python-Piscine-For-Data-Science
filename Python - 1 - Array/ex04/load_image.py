@@ -16,6 +16,4 @@ def ft_load(path: str) -> list[list]:
 
     np_data = np.array(data)
 
-    print(f"The shape of image is: {np_data.shape}")
-
     return np_data.tolist()
