@@ -33,8 +33,9 @@ def main():
         sentence = ""
 
         for letter in sys.argv[1]:
-            if not letter.isalnum() and not letter.isspace():
+            if not letter.upper() in NESTED_MORSE:
                 raise AssertionError("the arguments are bad")
+
             sentence += NESTED_MORSE[letter.upper()]
 
         print(sentence[:-1])
