@@ -24,6 +24,9 @@ def main():
         value_name="population"
     )
     france_data_melted["year"] = france_data_melted["year"].astype(int)
+    france_data_melted = france_data_melted[
+        france_data_melted["year"] <= 2050
+    ]
     france_data_melted["population"] = france_data_melted[
         "population"
     ].apply(convert_to_int)
@@ -35,6 +38,9 @@ def main():
         value_name="population"
     )
     belgium_data_melted["year"] = belgium_data_melted["year"].astype(int)
+    belgium_data_melted = belgium_data_melted[
+        belgium_data_melted["year"] <= 2050
+    ]
     belgium_data_melted["population"] = belgium_data_melted[
         "population"
     ].apply(convert_to_int)
@@ -61,6 +67,12 @@ def main():
                 max(france_data_melted["population"])
                 + 10_000_000, 20_000_000)]
             )
+        years = france_data_melted["year"].unique()
+        min_year = min(years)
+        max_year = max(years)
+        plt.xticks(
+            range(min_year, max_year + 1, 40),
+        )
 
         plt.title('Population Projections')
         plt.xlabel('Year')
