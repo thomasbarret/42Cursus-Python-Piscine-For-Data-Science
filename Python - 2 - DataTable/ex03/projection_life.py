@@ -11,19 +11,22 @@ def main():
     )
     life_expectancy_data = load("life_expectancy_years.csv")
 
-    income_1900 = income_data[
-        ["country", "1900"]].rename(columns={"1900": "gdp_per_capita"})
-    life_expectancy_1900 = life_expectancy_data[
-        ["country", "1900"]].rename(columns={"1900": "life_expectancy"})
+    income_1900 = income_data[["country", "1900"]].rename(
+        columns={"1900": "gdp_per_capita"}
+    )
+    life_expectancy_1900 = life_expectancy_data[["country", "1900"]].rename(
+        columns={"1900": "life_expectancy"}
+    )
 
     merged_data = income_1900.merge(life_expectancy_1900, on="country")
-
     merged_data.dropna(inplace=True)
 
     merged_data["gdp_per_capita"] = merged_data[
-        "gdp_per_capita"].apply(float)
+        "gdp_per_capita"
+    ].apply(float)
     merged_data["life_expectancy"] = merged_data[
-        "life_expectancy"].apply(float)
+        "life_expectancy"
+    ].apply(float)
 
     plt.figure(figsize=(10, 6))
     plt.scatter(
@@ -33,19 +36,13 @@ def main():
         edgecolors="k"
     )
 
-    # Annotate each country
-    # for _, row in merged_data.iterrows():
-    #     plt.text(
-    #         row["gdp_per_capita"], row["life_expectancy"], row["country"],
-    #         fontsize=8, alpha=0.7
-    #     )
-
-    # Add title and labels
     try:
-        plt.title("Life Expectancy vs GDP per Capita (1900)")
-        plt.xlabel("GDP per Capita (1900, in PPP-adjusted USD)")
-        plt.ylabel("Life Expectancy (1900, in years)")
-        plt.grid(True)
+        plt.title("1900")
+        plt.xlabel("Gross domestic product")
+        plt.ylabel("Life Expectancy")
+        plt.xscale('log')
+        plt.xticks([300, 1000, 10000], ['300', '1K', '10K'])
+        plt.grid(True, which="both", linestyle='--', linewidth=0.5)
         plt.tight_layout()
         plt.show()
     except KeyboardInterrupt:
