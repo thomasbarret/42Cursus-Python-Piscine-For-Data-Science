@@ -19,16 +19,19 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
     Returns:
         None: Prints the results or an error message if inputs are invalid.
     """
-    if len(args) == 0 or not all(isinstance(
-            arg, (int, float)) for arg in args):
-        print("ERROR")
-        return
+    # if len(args) == 0 or not all(isinstance(
+    #         arg, (int, float)) for arg in args):
+    #     print("ERROR")
+    #     return
 
     data = sorted(args)
 
     results = []
 
     for key, value in kwargs.items():
+        if (len(data) == 0):
+            print("ERROR")
+            continue
         if value == "mean":
             mean = sum(data) / len(data)
             results.append(f"mean : {mean}")
@@ -47,7 +50,6 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
             results.append(f"var : {var}")
         else:
             print("ERROR")
-            return
 
     for result in results:
         print(result)
